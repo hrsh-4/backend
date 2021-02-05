@@ -12,11 +12,12 @@ from .models import *
 
 
 
-TOTAL_BANKS = len(Bank.objects.all())
-TOTAL_BRANCHES = len(Branch.objects.all())
+TOTAL_BANKS = Bank.objects.all().count()
+TOTAL_BRANCHES = Branch.objects.all().count()
 
 
 def index(request):
+	print(TOTAL_BANKS, TOTAL_BRANCHES)
 	return render(request,"index.html")
 
 class BranchSearchView(mixins.ListModelMixin,generics.GenericAPIView):
